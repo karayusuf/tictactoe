@@ -15,7 +15,7 @@ module TicTacToe
       @index % 3
     end
 
-    def to_s
+    def row_and_column
       "#{row} #{column}"
     end
 

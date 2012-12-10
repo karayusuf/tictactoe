@@ -109,6 +109,13 @@ module TicTacToe
       end
     end
 
+    describe "#row_and_column" do
+      it "displays the row and column" do
+        space = Space.new(anything, 8)
+        space.row_and_column.should eql "2 2"
+      end
+    end
+
     describe "#open?" do
       it "is open for a value of '_'" do
         space = Space.new("_", anything)
