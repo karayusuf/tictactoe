@@ -49,7 +49,7 @@ module TicTacToe
 
         it "returns the space that wins the game" do
           space = board.winning_space_for("X")
-          space.should eql "0 0"
+          space.row_and_column.should eql "0 0"
         end
       end
 

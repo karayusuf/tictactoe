@@ -4,7 +4,7 @@ module TicTacToe
   class Player
     def initialize(player, board)
       @player = player
-      @board  = board
+      @board  = Board.new(board)
     end
 
     def opponent

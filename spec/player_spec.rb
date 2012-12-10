@@ -18,32 +18,26 @@ module TicTacToe
     describe "#move" do
       context "when the player can complete a row" do
         it "finds the winning space in the first column" do
-          board = Board.new([
-                            ["_", "_", "_"],
-                            ["_", "O", "O"],
-                            ["_", "_", "_"] ])
+          player = Player.new("O", [ ["_", "_", "_"],
+                                     ["_", "O", "O"],
+                                     ["_", "_", "_"] ])
 
-          player = Player.new("O", board)
           player.move.row_and_column.should eql "1 0"
         end
 
         it "finds the winning space in the second column" do
-          board = Board.new([
-                            ["_", "_", "_"],
-                            ["X", "_", "X"],
-                            ["_", "_", "_"] ])
+          player = Player.new("X", [ ["_", "_", "_"],
+                                     ["X", "_", "X"],
+                                     ["_", "_", "_"] ])
 
-          player = Player.new("X", board)
           player.move.row_and_column.should eql "1 1"
         end
 
         it "finds the winning space in the third column" do
-          board = Board.new([
-                            ["_", "_", "_"],
-                            ["_", "_", "_"],
-                            ["X", "X", "_"] ])
+          player = Player.new("X", [ ["_", "_", "_"],
+                                     ["_", "_", "_"],
+                                     ["X", "X", "_"] ])
 
-          player = Player.new("X", board)
           player.move.row_and_column.should eql "2 2"
         end
       end
