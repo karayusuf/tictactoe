@@ -12,7 +12,7 @@ module TicTacToe
     end
 
     def move
-      Space.new(@player, 3)
+      @board.winning_space_for(@player)
     end
 
   end
