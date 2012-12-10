@@ -128,5 +128,74 @@ module TicTacToe
       end
     end
 
+    describe "#winning_space_for?" do
+      context "row" do
+        context "when a player can complete a row" do
+          it "is the winning space" do
+            board = Board.new([
+                              ["_", "X", "X"],
+                              ["_", "_", "_"],
+                              ["_", "_", "_"]
+            ])
+
+            space = board.spaces.first
+            space.should be_winning_space_for("X", board)
+          end
+
+          it "is not the winning space if it has been taken" do
+            board = Board.new([
+                              ["O", "X", "X"],
+                              ["_", "_", "_"],
+                              ["_", "_", "_"]
+            ])
+
+            space = board.spaces.first
+            space.should_not be_winning_space_for("X", board)
+          end
+        end
+
+        context "when a player cannot complete a row" do
+          it "is not the winning space when only one space is marked" do
+            board = Board.new([
+                              ["_", "_", "X"],
+                              ["_", "_", "_"],
+                              ["_", "_", "_"]
+            ])
+
+            space = board.spaces.first
+            space.should_not be_winning_space_for("X", board)
+          end
+
+          it "is not the winning space when no spaces have been marked" do
+            board = Board.new([
+                              ["_", "_", "_"],
+                              ["_", "_", "_"],
+                              ["_", "_", "_"]
+            ])
+
+            space = board.spaces.first
+            space.should_not be_winning_space_for("X", board)
+          end
+        end
+      end
+    end
+
+    describe "#row_neighbors" do
+      let(:board) do
+        Board.new([ ["O", "X", "X"],
+                    ["X", "O", "O"],
+                    ["X", "O", "X"] ])
+      end
+
+      it "finds the space's neighbors the same row" do
+        space = Space.new("_", 1)
+        row_neighbors = space.row_neighbors(board)
+
+        row_neighbors.should have(2).spaces
+        row_neighbors[0].row_and_column.should eql "0 0"
+        row_neighbors[1].row_and_column.should eql "0 2"
+      end
+    end
   end
 end
+
