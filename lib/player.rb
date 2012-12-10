@@ -11,5 +11,9 @@ module TicTacToe
       @player == "X" ? "O" : "X"
     end
 
+    def move
+      Space.new(@player, 3)
+    end
+
   end
 end
