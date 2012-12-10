@@ -7,5 +7,9 @@ module TicTacToe
       @board  = board
     end
 
+    def opponent
+      @player == "X" ? "O" : "X"
+    end
+
   end
 end
