@@ -4,8 +4,8 @@ module TicTacToe
   class Board
     attr_reader :spaces
 
-    def initialize(board)
-      @spaces = identify_spaces(board)
+    def initialize(spaces)
+      @spaces = identify_spaces(spaces)
     end
 
     def open_spaces
@@ -20,9 +20,9 @@ module TicTacToe
 
     private
 
-    def identify_spaces(board)
-      board = board.flatten.each_with_index
-      board.map do |value, index|
+    def identify_spaces(spaces)
+      spaces = spaces.flatten.each_with_index
+      spaces.map do |value, index|
         Space.new(value, index)
       end
     end
