@@ -3,54 +3,69 @@ require File.dirname(__FILE__) + '/../lib/space'
 
 module TicTacToe
   describe Space do
+    let(:board) do
+      Board.new([
+        [ "_", "_", "_"],
+        [ "X", "O", "_"],
+        [ "X", "_", "_"]
+      ])
+    end
+
+    describe "#board" do
+      it "knows the board it is on" do
+        space = Space.new("_", 0, board)
+        space.board.should eql board
+      end
+    end
+
     describe "#row" do
       context "first row" do
         it "contains the first space" do
-          space = Space.new(anything, 0)
+          space = Space.new("_", 0, board)
           space.row.should eql 0
         end
 
         it "contains the second space" do
-          space = Space.new(anything, 1)
+          space = Space.new("_", 1, board)
           space.row.should eql 0
         end
 
         it "contains the third space" do
-          space = Space.new(anything, 2)
+          space = Space.new("_", 2, board)
           space.row.should eql 0
         end
       end
 
       context "second row" do
         it "contains the fourth space" do
-          space = Space.new(anything, 3)
+          space = Space.new("_", 3, board)
           space.row.should eql 1
         end
 
         it "contains the fifth space" do
-          space = Space.new(anything, 4)
+          space = Space.new("_", 4, board)
           space.row.should eql 1
         end
 
         it "contains the sixth space" do
-          space = Space.new(anything, 5)
+          space = Space.new("_", 5, board)
           space.row.should eql 1
         end
       end
 
       context "third row" do
         it "contains the seventh space" do
-          space = Space.new(anything, 6)
+          space = Space.new("_", 6, board)
           space.row.should eql 2
         end
 
         it "contains the eighth space" do
-          space = Space.new(anything, 7)
+          space = Space.new("_", 7, board)
           space.row.should eql 2
         end
 
         it "contains the nineth space" do
-          space = Space.new(anything, 8)
+          space = Space.new("_", 8, board)
           space.row.should eql 2
         end
       end
@@ -59,51 +74,51 @@ module TicTacToe
     describe "#column" do
       context "first column" do
         it "contains the first space" do
-          space = Space.new(anything, 0)
+          space = Space.new("_", 0, board)
           space.column.should eql 0
         end
 
         it "contains the fourth space" do
-          space = Space.new(anything, 3)
+          space = Space.new("_", 3, board)
           space.column.should eql 0
         end
 
         it "contains the seventh space" do
-          space = Space.new(anything, 6)
+          space = Space.new("_", 6, board)
           space.column.should eql 0
         end
       end
 
       context "second column" do
         it "contains the second space" do
-          space = Space.new(anything, 1)
+          space = Space.new("_", 1, board)
           space.column.should eql 1
         end
 
         it "contains the fifth space" do
-          space = Space.new(anything, 4)
+          space = Space.new("_", 4, board)
           space.column.should eql 1
         end
 
         it "contains the eighth space" do
-          space = Space.new(anything, 7)
+          space = Space.new("_", 7, board)
           space.column.should eql 1
         end
       end
 
       context "third column" do
         it "contains the third space" do
-          space = Space.new(anything, 2)
+          space = Space.new("_", 2, board)
           space.column.should eql 2
         end
 
         it "contains the sixth space" do
-          space = Space.new(anything, 5)
+          space = Space.new("_", 5, board)
           space.column.should eql 2
         end
 
         it "contains the ninth space" do
-          space = Space.new(anything, 8)
+          space = Space.new("_", 8, board)
           space.column.should eql 2
         end
       end
@@ -111,19 +126,19 @@ module TicTacToe
 
     describe "#row_and_column" do
       it "displays the row and column" do
-        space = Space.new(anything, 8)
+        space = Space.new("_", 8, board)
         space.row_and_column.should eql "2 2"
       end
     end
 
     describe "#open?" do
       it "is open for a value of '_'" do
-        space = Space.new("_", anything)
+        space = Space.new("_", 0, board)
         space.should be_open
       end
 
       it "is not open when the value is not '_'" do
-        space = Space.new("X", anything)
+        space = Space.new("X", 0, board)
         space.should_not be_open
       end
     end
@@ -188,7 +203,7 @@ module TicTacToe
       end
 
       it "finds the space's neighbors the same row" do
-        space = Space.new("_", 1)
+        space = Space.new("_", 1, board)
         row_neighbors = space.row_neighbors(board)
 
         row_neighbors.should have(2).spaces

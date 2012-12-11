@@ -23,7 +23,7 @@ module TicTacToe
     def identify_spaces(spaces)
       spaces = spaces.flatten.each_with_index
       spaces.map do |value, index|
-        Space.new(value, index)
+        Space.new(value, index, self)
       end
     end
   end

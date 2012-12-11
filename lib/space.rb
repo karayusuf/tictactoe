@@ -2,11 +2,12 @@ require File.dirname(__FILE__) + '/board'
 
 module TicTacToe
   class Space
-    attr_reader :value, :index
+    attr_reader :value, :index, :board
 
-    def initialize(value, index)
+    def initialize(value, index, board)
       @value = value
       @index = index
+      @board = board
     end
 
     def row
