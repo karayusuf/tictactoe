@@ -143,6 +143,28 @@ module TicTacToe
       end
     end
 
+    describe "#marked_by?" do
+      context "when the space is marked" do
+        let(:space) { Space.new("X", 0, board) }
+
+        it "is marked by the player" do
+          space.should be_marked_by "X"
+        end
+
+        it "is not marked by the player" do
+          space.should_not be_marked_by "O"
+        end
+      end
+
+      context "when the space is open" do
+        it "is not marked by the player" do
+          space = Space.new("_", 0, board)
+          space.should_not be_marked_by "X"
+          space.should_not be_marked_by "O"
+        end
+      end
+    end
+
     describe "#winning_space_for?" do
       context "row" do
         context "when a player can complete a row" do

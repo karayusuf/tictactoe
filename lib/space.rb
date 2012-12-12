@@ -26,6 +26,10 @@ module TicTacToe
       @value == "_"
     end
 
+    def marked_by? player
+      @value == player
+    end
+
     def winning_space_for?(player, board)
       open? &&
       row_neighbors(board).map(&:value) == ([player] * 2)
