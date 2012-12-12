@@ -18,6 +18,13 @@ module TicTacToe
       end
     end
 
+    def find_spaces_excluding(exclusion)
+      @spaces.select do |space|
+        next if space.index == exclusion.index
+        yield space
+      end
+    end
+
     def winning_space_for(player)
       open_spaces.detect do |space|
         space.winning_space_for? player

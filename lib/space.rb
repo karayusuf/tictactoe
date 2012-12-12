@@ -37,24 +37,20 @@ module TicTacToe
     end
 
     def row_neighbors
-      @board.spaces.select do |space|
-        space.row == row &&
-        space.column != column
+      @board.find_spaces_excluding(self) do |space|
+        space.row == row
       end
     end
 
     def column_neighbors
-      @board.spaces.select do |space|
-        space.row != row &&
+      @board.find_spaces_excluding(self) do |space|
         space.column == column
       end
     end
 
     def diagonal_up_neighbors
-      @board.spaces.select do |space|
-        spaces = [2, 4, 6]
-        spaces.delete(index)
-        spaces.include?(space.index)
+      @board.find_spaces_excluding(self) do |space|
+        (space.row + space.column) == 2
       end
     end
 
