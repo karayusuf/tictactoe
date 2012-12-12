@@ -67,6 +67,32 @@ module TicTacToe
           player.move.row_and_column.should eql "2 0"
         end
       end
+
+      context "when the player can complete a diagonal up" do
+        it "finds the winning space in the top right corner" do
+          player = Player.new("O", [ ["_", "_", "_"],
+                                     ["_", "O", "_"],
+                                     ["O", "_", "_"] ])
+
+          player.move.row_and_column.should eql "0 2"
+        end
+
+        it "finds the winning space in the center" do
+          player = Player.new("O", [ ["_", "_", "O"],
+                                     ["_", "_", "_"],
+                                     ["O", "_", "_"] ])
+
+          player.move.row_and_column.should eql "1 1"
+        end
+
+        it "finds the winning space in the bottom left corner" do
+          player = Player.new("O", [ ["_", "_", "O"],
+                                     ["_", "O", "_"],
+                                     ["_", "_", "_"] ])
+
+          player.move.row_and_column.should eql "2 0"
+        end
+      end
     end
   end
 end
