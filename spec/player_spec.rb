@@ -41,6 +41,32 @@ module TicTacToe
           player.move.row_and_column.should eql "2 2"
         end
       end
+
+      context "when the player can complete a column" do
+        it "finds the winning space in the first row" do
+          player = Player.new("O", [ ["_", "_", "_"],
+                                     ["_", "_", "O"],
+                                     ["_", "_", "O"] ])
+
+          player.move.row_and_column.should eql "0 2"
+        end
+
+        it "finds the winning space in the second row" do
+          player = Player.new("X", [ ["_", "X", "_"],
+                                     ["_", "_", "_"],
+                                     ["_", "X", "_"] ])
+
+          player.move.row_and_column.should eql "1 1"
+        end
+
+        it "finds the winning space in the third row" do
+          player = Player.new("O", [ ["O", "_", "_"],
+                                     ["O", "_", "_"],
+                                     ["_", "_", "_"] ])
+
+          player.move.row_and_column.should eql "2 0"
+        end
+      end
     end
   end
 end
