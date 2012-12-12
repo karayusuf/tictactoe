@@ -13,8 +13,8 @@ module TicTacToe
     end
 
     def winning_space_for(player)
-      winner = open_spaces.detect do |space|
-        space.winning_space_for?(player, self)
+      open_spaces.detect do |space|
+        space.winning_space_for? player
       end
     end
 

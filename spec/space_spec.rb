@@ -176,7 +176,7 @@ module TicTacToe
             ])
 
             space = board.spaces.first
-            space.should be_winning_space_for("X", board)
+            space.should be_winning_space_for "X"
           end
 
           it "is not the winning space if it has been taken" do
@@ -187,7 +187,7 @@ module TicTacToe
             ])
 
             space = board.spaces.first
-            space.should_not be_winning_space_for("X", board)
+            space.should_not be_winning_space_for "X"
           end
         end
 
@@ -200,7 +200,7 @@ module TicTacToe
             ])
 
             space = board.spaces.first
-            space.should_not be_winning_space_for("X", board)
+            space.should_not be_winning_space_for "X"
           end
 
           it "is not the winning space when no spaces have been marked" do
@@ -211,7 +211,7 @@ module TicTacToe
             ])
 
             space = board.spaces.first
-            space.should_not be_winning_space_for("X", board)
+            space.should_not be_winning_space_for "X"
           end
         end
       end
@@ -226,7 +226,7 @@ module TicTacToe
 
       it "finds the space's neighbors the same row" do
         space = Space.new("_", 1, board)
-        row_neighbors = space.row_neighbors(board)
+        row_neighbors = space.row_neighbors
 
         row_neighbors.should have(2).spaces
         row_neighbors[0].row_and_column.should eql "0 0"
@@ -235,4 +235,3 @@ module TicTacToe
     end
   end
 end
-

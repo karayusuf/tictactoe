@@ -30,13 +30,12 @@ module TicTacToe
       @value == player
     end
 
-    def winning_space_for?(player, board)
-      open? &&
-      row_neighbors(board).map(&:value) == ([player] * 2)
+    def winning_space_for? player
+      open? && row_neighbors.all? { |space| space.marked_by? player }
     end
 
-    def row_neighbors(board)
-      board.spaces.select do |space|
+    def row_neighbors
+      @board.spaces.select do |space|
         space.row == row &&
         space.column != column
       end
