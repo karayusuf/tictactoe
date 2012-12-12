@@ -12,7 +12,9 @@ module TicTacToe
     end
 
     def move
-      @board.winning_space_for(@player)
+      space = @board.winning_space_for(@player)
+      space ||= @board.winning_space_for(opponent)
+      space
     end
 
   end
