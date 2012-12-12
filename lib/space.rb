@@ -31,7 +31,8 @@ module TicTacToe
     end
 
     def winning_space_for? player
-      open? && row_neighbors.all? { |space| space.marked_by? player }
+      completes_row_for?(player) ||
+        completes_column_for?(player)
     end
 
     def row_neighbors
@@ -39,6 +40,23 @@ module TicTacToe
         space.row == row &&
         space.column != column
       end
+    end
+
+    def column_neighbors
+      @board.spaces.select do |space|
+        space.row != row &&
+        space.column == column
+      end
+    end
+
+    private
+
+    def completes_row_for? player
+      open? && row_neighbors.all? { |space| space.marked_by? player }
+    end
+
+    def completes_column_for? player
+      open? && column_neighbors.all? { |space| space.marked_by? player }
     end
   end
 end

@@ -12,6 +12,12 @@ module TicTacToe
       @spaces.select { |space| space.open? }
     end
 
+    def find_space(row, column)
+      @spaces.detect do |space|
+        space.row_and_column == "#{row} #{column}"
+      end
+    end
+
     def winning_space_for(player)
       open_spaces.detect do |space|
         space.winning_space_for? player

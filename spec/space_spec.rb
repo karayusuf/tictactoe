@@ -180,11 +180,9 @@ module TicTacToe
           end
 
           it "is not the winning space if it has been taken" do
-            board = Board.new([
-                              ["O", "X", "X"],
-                              ["_", "_", "_"],
-                              ["_", "_", "_"]
-            ])
+            board = Board.new([ ["O", "X", "X"],
+                                ["_", "_", "_"],
+                                ["_", "_", "_"] ])
 
             space = board.spaces.first
             space.should_not be_winning_space_for "X"
@@ -211,6 +209,33 @@ module TicTacToe
             ])
 
             space = board.spaces.first
+            space.should_not be_winning_space_for "X"
+          end
+        end
+      end
+
+      context "column" do
+        let(:board) do
+          Board.new([ ["X", "O", "O"],
+                      ["X", "O", "_"],
+                      ["_", "X", "_"] ])
+        end
+
+        context "when a player can complete the column" do
+          it "is the winning space" do
+            space = board.find_space(2, 0)
+            space.should be_winning_space_for "X"
+          end
+        end
+
+        context "when a player cannot complete a column" do
+          it "is not the winning space if it has been marked" do
+            space = board.find_space(0, 1)
+            space.should_not be_winning_space_for "X"
+          end
+
+          it "is not the winning space when only one space has been marked" do
+            space = board.find_space(1, 2)
             space.should_not be_winning_space_for "X"
           end
         end
