@@ -1,10 +1,7 @@
-#!/bin/ruby
-
 # Complete the function below to print 2 integers separated by a single space which will be your next move
 def next_move(player,board)
-  board = Board.new(board)
-  player = Player.new(player, board)
-  player.move
+  player = TicTacToe::Player.new(player, board)
+  print player.move.row_and_column
 end
 
 #If player is X, I'm the first player.

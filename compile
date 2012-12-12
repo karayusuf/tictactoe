@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "#!/bin/ruby" > upload.rb
+
+for file in lib/*.rb ; do
+  sed '/require/d' $file >> upload.rb
+done
+
+cat challenge.rb >> upload.rb
