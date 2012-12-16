@@ -21,6 +21,7 @@ module TicTacToe
       space ||= center
       space ||= opposite_corner
       space ||= corner
+      space ||= edge
       space
     end
 
@@ -54,6 +55,10 @@ module TicTacToe
 
     def corner
       @board.open_corner_spaces.first
+    end
+
+    def edge
+      @board.open_edge_spaces.first
     end
   end
 end

@@ -310,5 +310,15 @@ module TicTacToe
         player.move.row_and_column.should eql "0 0"
       end
     end
+
+    context "edge" do
+      it "chooses the first available edge" do
+        player = Player.new("X", [ ["X", "O", "X"],
+                                   ["O", "X", "_"],
+                                   ["O", "X", "O"] ])
+
+        player.move.row_and_column.should eql "1 2"
+      end
+    end
   end
 end

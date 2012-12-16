@@ -19,6 +19,14 @@ module TicTacToe
       @spaces.select { |space| space.open? }
     end
 
+    def open_edge_spaces
+      open_spaces.select { |space| space.edge? }
+    end
+
+    def edge_spaces
+      @spaces.select { |space| space.edge? }
+    end
+
     def open_corner_spaces
       open_spaces.select { |space| space.corner? }
     end
