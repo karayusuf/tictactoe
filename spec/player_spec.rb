@@ -239,5 +239,23 @@ module TicTacToe
       end
     end
 
+    context "blocking a fork" do
+      it "finds an edge when the opponent can create two forks" do
+        player = Player.new("X", [ ["O", "_", "_"],
+                                   ["_", "X", "_"],
+                                   ["_", "_", "O"] ])
+
+        player.move.row_and_column.should eql "0 1"
+      end
+
+      it "marks the fork when the opponent can only create on fork" do
+        player = Player.new("X", [ ["_", "X", "_"],
+                                   ["_", "O", "_"],
+                                   ["_", "O", "_"] ])
+
+        player.move.row_and_column.should eql "2 0"
+      end
+    end
+
   end
 end

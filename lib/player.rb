@@ -17,6 +17,7 @@ module TicTacToe
       space = win
       space ||= block
       space ||= create_fork
+      space ||= block_fork
       space
     end
 
@@ -30,6 +31,10 @@ module TicTacToe
 
     def create_fork
       ForkSpace.find @player, @board
+    end
+
+    def block_fork
+      ForkSpace.block opponent, @board
     end
 
   end
