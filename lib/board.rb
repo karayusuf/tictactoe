@@ -25,12 +25,6 @@ module TicTacToe
       end
     end
 
-    def winning_space_for(player)
-      open_spaces.detect do |space|
-        space.winning_space_for? player
-      end
-    end
-
     private
 
     def identify_spaces(spaces)
