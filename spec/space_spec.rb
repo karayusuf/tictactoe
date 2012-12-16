@@ -143,6 +143,15 @@ module TicTacToe
       end
     end
 
+    describe "#mark" do
+      it "marks the space for the player" do
+        space = Space.new("_", 0, board)
+
+        space.mark "X"
+        space.should be_marked_by "X"
+      end
+    end
+
     describe "#marked_by?" do
       context "when the space is marked" do
         let(:space) { Space.new("X", 0, board) }

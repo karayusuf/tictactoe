@@ -26,6 +26,10 @@ module TicTacToe
       @value == "_"
     end
 
+    def mark player
+      @value = player
+    end
+
     def marked_by? player
       @value == player
     end
