@@ -33,29 +33,29 @@ module TicTacToe
     def winning_space_for? player
       completes_row_for?(player) ||
         completes_column_for?(player) ||
-          completes_diagonal_up_for?(player) ||
-            completes_diagonal_down_for?(player)
+          completes_forward_slash_for?(player) ||
+            completes_back_slash_for?(player)
     end
 
-    def row_neighbors
+    def spaces_in_row
       @board.find_spaces_excluding(self) do |space|
         space.row == row
       end
     end
 
-    def column_neighbors
+    def spaces_in_column
       @board.find_spaces_excluding(self) do |space|
         space.column == column
       end
     end
 
-    def diagonal_up_neighbors
+    def spaces_in_forward_slash
       @board.find_spaces_excluding(self) do |space|
         (space.row + space.column) == 2
       end
     end
 
-    def diagonal_down_neighbors
+    def spaces_in_back_slash
       @board.find_spaces_excluding(self) do |space|
         space.row == space.column
       end
@@ -64,19 +64,19 @@ module TicTacToe
     private
 
     def completes_row_for? player
-      open? && row_neighbors.all? { |space| space.marked_by? player }
+      open? && spaces_in_row.all? { |space| space.marked_by? player }
     end
 
     def completes_column_for? player
-      open? && column_neighbors.all? { |space| space.marked_by? player }
+      open? && spaces_in_column.all? { |space| space.marked_by? player }
     end
 
-    def completes_diagonal_up_for? player
-      open? && diagonal_up_neighbors.all? { |space| space.marked_by? player }
+    def completes_forward_slash_for? player
+      open? && spaces_in_forward_slash.all? { |space| space.marked_by? player }
     end
 
-    def completes_diagonal_down_for? player
-      open? && diagonal_down_neighbors.all? { |space| space.marked_by? player }
+    def completes_back_slash_for? player
+      open? && spaces_in_back_slash.all? { |space| space.marked_by? player }
     end
   end
 end

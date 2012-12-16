@@ -241,22 +241,5 @@ module TicTacToe
         end
       end
     end
-
-    describe "#row_neighbors" do
-      let(:board) do
-        Board.new([ ["O", "X", "X"],
-                    ["X", "O", "O"],
-                    ["X", "O", "X"] ])
-      end
-
-      it "finds the space's neighbors the same row" do
-        space = Space.new("_", 1, board)
-        row_neighbors = space.row_neighbors
-
-        row_neighbors.should have(2).spaces
-        row_neighbors[0].row_and_column.should eql "0 0"
-        row_neighbors[1].row_and_column.should eql "0 2"
-      end
-    end
   end
 end
