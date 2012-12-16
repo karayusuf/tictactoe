@@ -300,5 +300,15 @@ module TicTacToe
         player.move.row_and_column.should eql "2 2"
       end
     end
+
+    context "corner" do
+      it "chooses the first available corner" do
+        player = Player.new("X", [ ["_", "_", "_"],
+                                   ["_", "X", "_"],
+                                   ["_", "O", "_"] ])
+
+        player.move.row_and_column.should eql "0 0"
+      end
+    end
   end
 end

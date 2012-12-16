@@ -20,6 +20,7 @@ module TicTacToe
       space ||= block_fork
       space ||= center
       space ||= opposite_corner
+      space ||= corner
       space
     end
 
@@ -49,6 +50,10 @@ module TicTacToe
       @board.open_corner_spaces.detect do |space|
         space.opposite_marked_by? opponent
       end
+    end
+
+    def corner
+      @board.open_corner_spaces.first
     end
   end
 end
