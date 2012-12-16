@@ -1,8 +1,8 @@
 require 'rspec'
-require File.dirname(__FILE__) + '/../lib/winning_move'
+require File.dirname(__FILE__) + '/../lib/winning_space'
 
 module TicTacToe
-  describe WinningMove do
+  describe WinningSpace do
     context "when there is no winning space" do
       let(:board) do
         Board.new([ ["_", "_", "_"],
@@ -11,11 +11,11 @@ module TicTacToe
       end
 
       it "does not find a space for player 'X'" do
-        WinningMove.find("X", board).should be_nil
+        WinningSpace.find("X", board).should be_nil
       end
 
       it "does not find a space for player 'O'" do
-        WinningMove.find("O", board).should be_nil
+        WinningSpace.find("O", board).should be_nil
       end
     end
 
@@ -25,7 +25,7 @@ module TicTacToe
                             ["_", "_", "_"],
                             ["_", "_", "_"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(0, 0)
       end
 
@@ -34,7 +34,7 @@ module TicTacToe
                             ["_", "_", "_"],
                             ["_", "_", "_"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(0, 1)
       end
 
@@ -43,7 +43,7 @@ module TicTacToe
                             ["_", "_", "_"],
                             ["_", "_", "_"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(0, 2)
       end
     end
@@ -54,7 +54,7 @@ module TicTacToe
                             ["_", "_", "X"],
                             ["_", "_", "X"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(0, 2)
       end
 
@@ -63,7 +63,7 @@ module TicTacToe
                             ["_", "_", "_"],
                             ["_", "_", "X"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(1, 2)
       end
 
@@ -72,7 +72,7 @@ module TicTacToe
                             ["_", "X", "_"],
                             ["_", "_", "_"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(2, 1)
       end
     end
@@ -83,7 +83,7 @@ module TicTacToe
                             ["_", "X", "_"],
                             ["_", "_", "_"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(2, 0)
       end
 
@@ -92,7 +92,7 @@ module TicTacToe
                             ["_", "_", "_"],
                             ["X", "_", "_"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(1, 1)
       end
 
@@ -101,7 +101,7 @@ module TicTacToe
                             ["_", "X", "_"],
                             ["X", "_", "_"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(0, 2)
       end
     end
@@ -112,7 +112,7 @@ module TicTacToe
                             ["_", "X", "_"],
                             ["_", "_", "X"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(0, 0)
       end
 
@@ -121,7 +121,7 @@ module TicTacToe
                             ["_", "_", "_"],
                             ["_", "_", "X"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(1, 1)
       end
 
@@ -130,7 +130,7 @@ module TicTacToe
                             ["_", "X", "_"],
                             ["_", "_", "_"] ])
 
-        space = WinningMove.find("X", board)
+        space = WinningSpace.find("X", board)
         space.should eql board.find_space(2, 2)
       end
     end

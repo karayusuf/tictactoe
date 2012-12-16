@@ -1,5 +1,5 @@
 module TicTacToe
-  class WinningMove
+  class WinningSpace
 
     def self.find player, board
       board.open_spaces.detect do |space|

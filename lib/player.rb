@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/board'
-require File.dirname(__FILE__) + '/winning_move'
+require File.dirname(__FILE__) + '/winning_space'
 
 module TicTacToe
   class Player
@@ -19,11 +19,11 @@ module TicTacToe
     end
 
     def win
-      WinningMove.find @player, @board
+      WinningSpace.find @player, @board
     end
 
     def block
-      WinningMove.find opponent, @board
+      WinningSpace.find opponent, @board
     end
 
   end
