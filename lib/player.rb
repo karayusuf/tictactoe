@@ -1,5 +1,6 @@
 require File.dirname(__FILE__) + '/board'
 require File.dirname(__FILE__) + '/winning_space'
+require File.dirname(__FILE__) + '/fork_space'
 
 module TicTacToe
   class Player
@@ -15,6 +16,7 @@ module TicTacToe
     def move
       space = win
       space ||= block
+      space ||= create_fork
       space
     end
 
@@ -24,6 +26,10 @@ module TicTacToe
 
     def block
       WinningSpace.find opponent, @board
+    end
+
+    def create_fork
+      ForkSpace.find @player, @board
     end
 
   end

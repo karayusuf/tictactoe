@@ -1,8 +1,15 @@
 require File.dirname(__FILE__) + '/space'
+require File.dirname(__FILE__) + '/fork_space'
+require File.dirname(__FILE__) + '/winning_space'
 
 module TicTacToe
   class Board
     attr_reader :spaces
+
+    def self.new_with_board(board)
+      spaces = board.spaces.map(&:value)
+      new(spaces)
+    end
 
     def initialize(spaces)
       @spaces = identify_spaces(spaces)
@@ -23,6 +30,11 @@ module TicTacToe
         next if space.index == exclusion.index
         yield space
       end
+    end
+
+    def has_two_winning_spaces_for? player
+      winning_spaces = WinningSpace.find_all(player, self)
+      winning_spaces.count == 2
     end
 
     private

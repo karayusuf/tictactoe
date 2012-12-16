@@ -229,5 +229,15 @@ module TicTacToe
       end
     end
 
+    context "when the player can create a fork" do
+      it "creates the fork" do
+        player = Player.new("O", [ ["O", "_", "_"],
+                                   ["X", "O", "_"],
+                                   ["_", "_", "X"] ])
+
+        player.move.row_and_column.should eql "0 1"
+      end
+    end
+
   end
 end
