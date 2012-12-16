@@ -46,6 +46,16 @@ module TicTacToe
       @value == player
     end
 
+    def opposite_marked_by? player
+      opposite_space.marked_by? player
+    end
+
+    def opposite_space
+      opposite_row    = (row - 2).abs
+      opposite_column = (column - 2).abs
+      @board.find_space(opposite_row, opposite_column)
+    end
+
     def winning_space_for? player
       completes_row_for?(player) ||
         completes_column_for?(player) ||

@@ -19,8 +19,16 @@ module TicTacToe
       @spaces.select { |space| space.open? }
     end
 
+    def open_corner_spaces
+      open_spaces.select { |space| space.corner? }
+    end
+
     def corner_spaces
       @spaces.select { |space| space.corner? }
+    end
+
+    def corner_spaces_marked_by player
+      corner_spaces.select { |space| space.marked_by? player }
     end
 
     def find_space(row, column)
@@ -42,7 +50,7 @@ module TicTacToe
     end
 
     def has_multiple_corners_marked_by? player
-      corner_spaces.select { |space| space.marked_by? player }.count > 1
+      corner_spaces_marked_by(player).count > 1
     end
 
     private

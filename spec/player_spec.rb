@@ -266,5 +266,39 @@ module TicTacToe
         player.move.row_and_column.should eql "1 1"
       end
     end
+
+    context "opposite corner" do
+      it "marks the top left corner" do
+        player = Player.new("X", [ ["_", "_", "_"],
+                                   ["_", "X", "_"],
+                                   ["_", "_", "O"] ])
+
+        player.move.row_and_column.should eql "0 0"
+      end
+
+      it "marks the top right corner" do
+        player = Player.new("X", [ ["_", "_", "_"],
+                                   ["_", "X", "_"],
+                                   ["O", "_", "_"] ])
+
+        player.move.row_and_column.should eql "0 2"
+      end
+
+      it "marks the bottom left corner" do
+        player = Player.new("X", [ ["_", "_", "O"],
+                                   ["_", "X", "_"],
+                                   ["_", "_", "_"] ])
+
+        player.move.row_and_column.should eql "2 0"
+      end
+
+      it "marks the bottom right corner" do
+        player = Player.new("X", [ ["O", "_", "_"],
+                                   ["_", "X", "_"],
+                                   ["_", "_", "_"] ])
+
+        player.move.row_and_column.should eql "2 2"
+      end
+    end
   end
 end
