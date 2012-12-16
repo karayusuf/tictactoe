@@ -18,6 +18,7 @@ module TicTacToe
       space ||= block
       space ||= create_fork
       space ||= block_fork
+      space ||= first_move
       space ||= center
       space ||= opposite_corner
       space ||= corner
@@ -41,6 +42,12 @@ module TicTacToe
 
     def block_fork
       ForkSpace.block opponent, @board
+    end
+
+    def first_move
+      if @board.spaces.all? { |space| space.open? }
+        [center, corner].sample
+      end
     end
 
     def center
