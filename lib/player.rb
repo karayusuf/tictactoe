@@ -18,8 +18,11 @@ module TicTacToe
       space ||= block
       space ||= create_fork
       space ||= block_fork
+      space ||= center
       space
     end
+
+    private
 
     def win
       WinningSpace.find @player, @board
@@ -35,6 +38,10 @@ module TicTacToe
 
     def block_fork
       ForkSpace.block opponent, @board
+    end
+
+    def center
+      @board.open_spaces.detect { |space| space.center? }
     end
 
   end
