@@ -26,6 +26,14 @@ module TicTacToe
       @value == "_"
     end
 
+    def center?
+      (row == 1) && (column == 1)
+    end
+
+    def corner?
+      !center? && (row + column).even?
+    end
+
     def edge?
       (row + column).odd?
     end

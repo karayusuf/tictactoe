@@ -11,6 +11,29 @@ module TicTacToe
       ])
     end
 
+    describe "#corner?" do
+      it "has 4 corners" do
+        corners = board.spaces.select { |space| space.corner? }
+        corners.should have(4).corners
+      end
+
+      it "includes 0, 0" do
+        board.find_space(0, 0).should be_corner
+      end
+
+      it "includes 0, 2" do
+        board.find_space(0, 2).should be_corner
+      end
+
+      it "includes 2, 0" do
+        board.find_space(2, 0).should be_corner
+      end
+
+      it "includes 2, 2" do
+        board.find_space(2, 2).should be_corner
+      end
+    end
+
     describe "#edge?" do
       it "has 4 edges" do
         edges = board.spaces.select { |space| space.edge? }
