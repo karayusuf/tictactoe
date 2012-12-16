@@ -26,6 +26,10 @@ module TicTacToe
       @value == "_"
     end
 
+    def edge?
+      (row + column).odd?
+    end
+
     def mark player
       @value = player
     end

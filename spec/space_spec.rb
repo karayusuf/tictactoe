@@ -11,6 +11,29 @@ module TicTacToe
       ])
     end
 
+    describe "#edge?" do
+      it "has 4 edges" do
+        edges = board.spaces.select { |space| space.edge? }
+        edges.should have(4).edges
+      end
+
+      it "includes 0,1" do
+        board.find_space(0, 1).should be_edge
+      end
+
+      it "includes 1,0" do
+        board.find_space(1, 0).should be_edge
+      end
+
+      it "includes 1,2" do
+        board.find_space(1, 2).should be_edge
+      end
+
+      it "includes 2,1" do
+        board.find_space(2, 1).should be_edge
+      end
+    end
+
     describe "#board" do
       it "knows the board it is on" do
         space = Space.new("_", 0, board)
